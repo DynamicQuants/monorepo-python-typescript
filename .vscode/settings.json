@@ -1,10 +1,9 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
   "[handlebars]": {
     "editor.formatOnSave": false
+  },
+  "files.associations": {
+    "*.css": "tailwindcss"
   }
 }

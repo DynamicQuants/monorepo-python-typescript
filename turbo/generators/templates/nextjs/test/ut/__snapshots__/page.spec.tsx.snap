@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Root page should match the snapshot 1`] = `
+<div>
+  <div
+    class="font-sans h-screen flex flex-col items-center justify-center"
+  >
+    <h1
+      class="text-6xl font-bold text-center"
+      role="heading"
+    >
+      Hello World!
+    </h1>
+    <p
+      class="font-mono text-lg text-center mt-4"
+      role="paragraph"
+    >
+      Welcome to your new Next.js app.
+    </p>
+  </div>
+</div>
+`;
