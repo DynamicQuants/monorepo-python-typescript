@@ -5,5 +5,13 @@
   },
   "files.associations": {
     "*.css": "tailwindcss"
+  },
+  "files.exclude": {
+    "**/node_modules/": true,
+    "**/dist/": true,
+    "**/coverage/": true,
+    "**/.turbo/": true,
+    "**/.next/": true,
+    "**/.swc/": true
   }
 }
