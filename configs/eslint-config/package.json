@@ -5,7 +5,7 @@
   "files": [
     "base.js",
     "library.js",
-    "nest.js",
+    "nestjs.js",
     "next.js",
     "prettier-base.js",
     "react-internal.js"
