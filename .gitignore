@@ -33,6 +33,7 @@ out
 build
 dist
 .swc
+tsconfig.tsbuildinfo
 
 # Logs
 logs

@@ -49,11 +49,12 @@ export default async function generator(plop: PlopTypes.NodePlopAPI): Promise<vo
         },
       ],
       actions: [
+        getDestination,
         {
           type: 'addMany',
           templateFiles: 'templates/{{template}}/**/*',
-          destination: '{{ turbo.paths.root }}/apps/{{name}}',
-          base: 'templates/{{template}}',
+          destination: `{{turbo.paths.root}}/{{destination}}/{{name}}`,
+          base: `templates/{{template}}`,
           globOptions: {
             ignore: [
               '**/node_modules/**',
@@ -64,6 +65,7 @@ export default async function generator(plop: PlopTypes.NodePlopAPI): Promise<vo
               '**/.DS_Store',
               '**/__snapshots__/**',
               '**/__results__/**',
+              'tsconfig.tsbuildinfo',
             ],
             dot: true,
           },
@@ -76,3 +78,8 @@ export default async function generator(plop: PlopTypes.NodePlopAPI): Promise<vo
     console.error(error);
   }
 }
+
+const getDestination: PlopTypes.CustomActionFunction = async (answers: any) => {
+  answers.destination = answers.type === 'lib' ? 'packages' : 'apps';
+  return answers.destination;
+};
