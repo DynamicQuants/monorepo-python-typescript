@@ -2,25 +2,31 @@ import type { PlopTypes } from '@turbo/gen';
 import fs from 'node:fs';
 import path from 'node:path';
 
-export default async function generator(
-  plop: PlopTypes.NodePlopAPI,
-): Promise<void> {
+export default async function generator(plop: PlopTypes.NodePlopAPI): Promise<void> {
   try {
     plop.setGenerator('main', {
       description: 'Generate a new Next.js application',
       prompts: [
+        // Type of project.
+        {
+          type: 'list',
+          name: 'type',
+          message: 'What type of project should be created?',
+          choices: ['app', 'lib'],
+        },
+
         // Type of template.
         {
           type: 'list',
           name: 'template',
           message: 'What template should be created?',
-          choices: fs
-            .readdirSync(path.resolve('turbo/generators/templates'))
-            .filter((file) =>
-              fs
-                .statSync(path.join('turbo/generators/templates', file))
-                .isDirectory(),
-            ),
+          choices: (answers) =>
+            fs
+              .readdirSync(path.resolve('turbo/generators/templates'))
+              .filter((file) =>
+                fs.statSync(path.join('turbo/generators/templates', file)).isDirectory(),
+              )
+              .filter((file) => file.includes(answers.type)),
         },
 
         // Name for the app/library.
